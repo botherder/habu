@@ -48,14 +48,6 @@ syntax, which makes the editing very easy and flexible, or with pure HTML.
 Habu also integrates a [Pygments](http://pygments.org/) based pre-processor, which will highlight
 code blocks according to the specified programming language.
 
-[code:c]/* Hello World */
-#include<stdio.h>
-
-int main() {
-    printf("Hello World!");
-    return 0;
-}[/code]
-
 This is pretty much it for now.
 
 Enjoy.
