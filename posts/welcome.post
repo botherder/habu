@@ -12,7 +12,7 @@ all those byzantine Ruby static generators, you might find this little tool of s
 
 Firstly, you can install all the required dependencies with:
 
-    pip install Jinja2 Pygments PyYAML
+    pip install Jinja2 Markdown Pygments PyYAML
 
 Now just download and extract Habu somewhere, you'll find the main script `habu.py` with
 the following available command line options:
