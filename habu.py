@@ -3,6 +3,8 @@
 # This file is part of Habu - https://github.com/botherder/habu
 # See the file 'LICENSE' for copying permission.
 
+# Big up for @ochsff for allowing me to rip off part of his code.
+
 import os
 import re
 import sys
