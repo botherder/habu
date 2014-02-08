@@ -112,7 +112,7 @@ def generate_pages(destination):
     # folder, to get the skeleton and the content.
     env.loader = FileSystemLoader(["pages", "template"])
 
-    # Loop throug hall static pages.
+    # Loop through all static pages.
     for page in os.listdir("pages"):
         dest = os.path.join(destination, page)
         print("Generating page {0}...".format(dest)),
