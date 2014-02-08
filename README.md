@@ -25,7 +25,7 @@ the following available command line options:
                             Specify the destination folder where to install the
                             files
 
-You simply need to execute `python habu.py -d /path/to/dest` and Habu the 
+You simply need to execute `python habu.py -d /path/to/dest` and the 
 script will automatically process the available blog posts and generate the
 resulting HTML pages in the destination folder.
 
