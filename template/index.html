@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{% if first %}
+    <div class="hero-unit faq">
+        <div class="ac">
+            <h2><a href="{{first.link}}">{{first.title}}</a></h2>
+        </div>
+    </div>
+
+    <div>
+        {{first.content}}
+        <div>
+            <p class="text-muted">published on {{first.date}} by {{first.author}}</p>
+        </div>
+    </div>
+{% endif %}
+
+<hr />
+
+<h3>Older Posts</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Title</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+        <tr>
+            <td>{{post["date"]}}</td>
+            <td><a href="{{post.link}}">{{post.title}}</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

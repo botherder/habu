@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="hero-unit faq">
+    <div class="ac">
+        <h2>{{title}}</h2>
+    </div>
+</div>
+
+<div>
+    {{content}}
+    <div>
+        <p class="text-muted">published on {{date}} by {{author}}</p>
+    </div>
+</div>
+{% endblock %}
