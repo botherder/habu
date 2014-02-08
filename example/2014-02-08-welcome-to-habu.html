@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Blog</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz" rel="stylesheet" type="text/css">
+<style>
+body {
+    font-family: Open Sans;
+    background-color: #f3f3f3;
+}
+h1, h2, h3, h4 {
+    font-family: Yanone Kaffeesatz;
+}
+.container {
+    max-width: 730px;
+}
+.footer {
+    margin-top: 50px;
+    font-size: 11px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="hero-unit faq">
+        <div class="ac" style="text-align: center;">
+            <h1>My Blog</h1>
+            <a href="index.html">Home</a> &bull; <a href="about.html">About</a>
+        </div>
+    </div>
+    
+<div class="hero-unit faq">
+    <div class="ac">
+        <h2>Welcome to Habu</h2>
+    </div>
+</div>
+
+<div>
+    <p>Welcome to Habu.</p>
+<p>Habu is likely the simplest static blog generator you'll encounter, no bullshit.
+If you're techie enough and need a simple page to publish your work and if you share
+my disgust and terror for blog platforms with massive codebases and my repulsion for
+all those byzantine Ruby static generators, you might find this little tool of some use.</p>
+<p>Firstly, you can install all the required dependencies with:</p>
+<pre><code>pip install Jinja2 Pygments PyYAML
+</code></pre>
+<p>Now just download and extract Habu somewhere, you'll find the main script <code>habu.py</code> with
+the following available command line options:</p>
+<pre><code>usage: habu.py [-h] [-s] [-p] -d DESTINATION
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -s, --static          Install static files
+  -p, --pages           Generate static pages
+  -d DESTINATION, --destination DESTINATION
+                        Specify the destination folder where to install the
+                        files
+</code></pre>
+<p>You simply need to execute <code>python habu.py -d /path/to/dest</code> and Habu the 
+script will automatically process the available blog posts and generate the
+resulting HTML pages in the destination folder.</p>
+<p>By providing the options <code>--static</code> or <code>--pages</code> you instruct Habu to
+respectively install the static files (CSS, JavaScript and so on) and generate
+the static pages.</p>
+<p>All available blog posts are stored in the <em>posts/</em> directory and they consist
+in a set of YAML headers followed by the body, separated by an empty line:</p>
+<pre><code>Title: Blog Post
+Slug: blog-post
+Data: 1971-01-01 00:00:00
+
+Blog post content.
+</code></pre>
+<p>The blog post content can be defined with the popular <a href="https://daringfireball.net/projects/markdown/">Markdown</a>
+syntax, which makes the editing very easy and flexible, or with pure HTML.</p>
+<p>Habu also integrates a <a href="http://pygments.org/">Pygments</a> based pre-processor, which will highlight
+code blocks according to the specified programming language.</p>
+<div class="colorful" style="background: #f8f8f8"><pre style="line-height: 125%"><span style="color: #408080; font-style: italic">/* Hello World */</span>
+<span style="color: #BC7A00">#include&lt;stdio.h&gt;</span>
+
+<span style="color: #B00040">int</span> <span style="color: #0000FF">main</span>() {
+    printf(<span style="color: #BA2121">&quot;Hello World!&quot;</span>);
+    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">0</span>;
+}
+</pre></div>
+
+<p>This is pretty much it for now.</p>
+<p>Enjoy.</p>
+    <div>
+        <p class="text-muted">published on 2014-02-08 15:00:00 by nex</p>
+    </div>
+</div>
+
+</div>
+<div class="footer">
+    <p class="text-muted">powered by <a href="https://github.com/botherder/habu">habu</a>.</p>
+</div>
+</body>
+</html>
