@@ -240,6 +240,26 @@ def generate_index(posts, destination):
 
     print(green("done"))
 
+def generate_feed(posts, destination):
+    """This generate the Atom feed with the list of blog posts.
+    """
+    dest = os.path.join(destination, "feed.xml")
+
+    print("Generating atom feed..."),
+
+    # Load template engine.
+    env = Environment()
+    # Load the template files, base and post.
+    env.loader = FileSystemLoader("template")
+    print posts
+    xml = env.get_template("feedtemplate.xml").render(items=posts)
+
+    # Create file.
+    with open(dest, "w") as handle:
+        handle.write(xml)
+
+    print(green("done"))
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-s", "--static", help="Install static files", action="store_true", default=False)
@@ -262,6 +282,7 @@ def main():
     # Generate dynamic blog posts.
     posts = generate_posts(args.destination)
     generate_index(posts, args.destination)
+    generate_feed(posts, args.destination)
 
 if __name__ == "__main__":
     main()
