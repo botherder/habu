@@ -251,7 +251,6 @@ def generate_feed(posts, destination):
     env = Environment()
     # Load the template files, base and post.
     env.loader = FileSystemLoader("template")
-    print posts
     xml = env.get_template("feedtemplate.xml").render(items=posts)
 
     # Create file.
