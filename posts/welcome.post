@@ -27,9 +27,11 @@ the following available command line options:
                             Specify the destination folder where to install the
                             files
 
-You simply need to execute `python habu.py -d /path/to/dest` and Habu the 
-script will automatically process the available blog posts and generate the
+You simply need to execute `python habu.py -d /path/to/dest` and Habu 
+will automatically process the available blog posts and generate the
 resulting HTML pages in the destination folder.
+
+<!--more-->
 
 By providing the options `--static` or `--pages` you instruct Habu to
 respectively install the static files (CSS, JavaScript and so on) and generate
