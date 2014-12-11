@@ -237,9 +237,9 @@ def generate_index(posts, destination):
     # If there is, only displays up to the break and append a link
     # to the full post.
     more = "<!--more-->"
-    if more in first.content:
-        first.content = first.content.split(more)[0]
-        first.content += "<p><a href=\"{0}\">Read more...</a></p>".format(first.link)
+    if more in first["content"]:
+        first["content"] = first["content"].split(more)[0]
+        first["content"] += "<p><a href=\"{0}\">Read more...</a></p>".format(first["link"])
 
     html = tpl.render({"page" : "index", "first" : first, "posts" : posts})
 
