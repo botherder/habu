@@ -177,7 +177,7 @@ def generate_posts(destination):
 
         # Generate post descriptor.
         post_object = dict(
-            date=date,
+            date=str(date),
             title=headers["Title"],
             slug=headers["Slug"],
             author=headers["Author"],
