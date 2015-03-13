@@ -43,6 +43,8 @@ except ImportError as e:
     print(red("Unable to import dependency:") + str(e))
     sys.exit(-1)
 
+cfg = yaml.load(open("config.yaml", "r").read())
+
 class CodeBlockPreprocessor(Preprocessor):
     """This converts code blocks into highlighted code.
     Neat stuff."""
@@ -122,7 +124,10 @@ def generate_pages(destination):
         # Load the template for the current page.
         template = env.get_template(page)
         # Generate the HTML output for the static page.
-        html = template.render({"page" : page})
+        html = template.render(dict(
+            blog=cfg["blog"],
+            page=page
+        ))
         # Write the HTML to the destination file.
         with open(dest, "w") as handle:
             handle.write(html)
@@ -173,14 +178,22 @@ def generate_posts(destination):
         if headers.has_key("Date"):
             date = headers["Date"]
         else:
-            date = time.strftime("%Y-%m-%d %H:%M:%S")
+            date = str(time.strftime("%Y-%m-%d %H:%M:%S"))
+
+        # Otherwise the user specifies a different author in the post, use
+        # the one provided in the config file.
+        if headers.has_key("Author"):
+            author = headers["Author"]
+        else:
+            author = cfg["author"]
 
         # Generate post descriptor.
         post_object = dict(
-            date=str(date),
+            blog=cfg["blog"],
+            date=date,
             title=headers["Title"],
             slug=headers["Slug"],
-            author=headers["Author"],
+            author=author,
             content=content,
             link=None
         )
@@ -244,7 +257,12 @@ def generate_index(posts, destination):
             first["content"] = first["content"].split(more)[0]
             first["content"] += "<p><a href=\"{0}\">Read more...</a></p>".format(first["link"])
 
-    html = tpl.render({"page" : "index", "first" : first, "posts" : posts})
+    html = tpl.render(dict(
+        blog=cfg["blog"],
+        page="index",
+        first=first,
+        posts=posts
+    ))
 
     # Create file.
     with open(dest, "w") as handle:
@@ -263,7 +281,11 @@ def generate_feed(posts, destination):
     env = Environment()
     # Load the template files, base and post.
     env.loader = FileSystemLoader("template")
-    xml = env.get_template("feedtemplate.xml").render(items=posts)
+    xml = env.get_template("feedtemplate.xml").render(
+        items=posts,
+        blog=cfg["blog"],
+        author=cfg["author"]
+    )
 
     # Create file.
     with open(dest, "w") as handle:
