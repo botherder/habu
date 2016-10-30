@@ -175,14 +175,14 @@ def generate_posts(destination):
         print(green("done"))
 
         # If the user specified a date use it, otherwise generate it.
-        if headers.has_key("Date"):
+        if "Date" in headers:
             date = headers["Date"]
         else:
             date = str(time.strftime("%Y-%m-%d %H:%M:%S"))
 
         # Otherwise the user specifies a different author in the post, use
         # the one provided in the config file.
-        if headers.has_key("Author"):
+        if "Author" in headers:
             author = headers["Author"]
         else:
             author = cfg["author"]
