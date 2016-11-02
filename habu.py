@@ -49,18 +49,18 @@ class CodeBlockPreprocessor(Preprocessor):
     """This converts code blocks into highlighted code.
     Neat stuff."""
     # Compile regexp, matching [code][/code] blocks.
-    pattern = re.compile(r"\[code:(.+?)\](.+?)\[/code\]", re.S)
+    pattern = re.compile(r"\[code(:(?P<lang>.+?))?\](?P<code>.+?)\[/code\]", re.S)
     # Add style formatter.
     formatter = HtmlFormatter(noclasses=True, cssclass="colorful")
 
     def run(self, lines):
         def repl(m):
             try:
-                lexer = get_lexer_by_name(m.group(1))
+                lexer = get_lexer_by_name(m.groupdict()['lang'])
             except ValueError:
                 lexer = TextLexer()
 
-            code = highlight(m.group(2), lexer, self.formatter)
+            code = highlight(m.groupdict()['code'], lexer, self.formatter)
             return "\n{0}\n".format(code)
 
         return [self.pattern.sub(repl, "\n".join(lines))]
